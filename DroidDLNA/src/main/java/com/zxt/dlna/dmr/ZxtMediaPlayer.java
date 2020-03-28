@@ -19,7 +19,6 @@ import org.fourthline.cling.support.renderingcontrol.lastchange.ChannelMute;
 import org.fourthline.cling.support.renderingcontrol.lastchange.ChannelVolume;
 import org.fourthline.cling.support.renderingcontrol.lastchange.RenderingControlVariable;
 
-import com.zxt.dlna.dmp.GPlayer;
 import com.zxt.dlna.dmp.GPlayer.MediaListener;
 import com.zxt.dlna.dmp.IJKPlayer;
 import com.zxt.dlna.util.Action;

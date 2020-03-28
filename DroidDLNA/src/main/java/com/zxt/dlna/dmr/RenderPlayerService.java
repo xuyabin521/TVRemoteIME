@@ -6,15 +6,12 @@
 
 package com.zxt.dlna.dmr;
 
-import com.zxt.dlna.dmp.GPlayer;
 import com.zxt.dlna.dmp.IJKPlayer;
 import com.zxt.dlna.util.Action;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-
-import player.XLVideoPlayActivity;
 
 public class RenderPlayerService extends Service {
 

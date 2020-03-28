@@ -287,7 +287,7 @@ public class NetworkAddressFactoryImpl implements NetworkAddressFactory {
             prefix -= 8;
         }
         if(i == ip.length) return true;
-        final byte mask = (byte) ~((1 << 8 - prefix) - 1);
+        final byte mask = (byte) -(1 << 8 - prefix);
 
         return (ip[i] & mask) == (network[i] & mask);
     }

@@ -1,7 +1,6 @@
 package com.xunlei.downloadlib;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;

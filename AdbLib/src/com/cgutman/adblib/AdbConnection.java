@@ -123,7 +123,6 @@ public class AdbConnection implements Closeable {
 	 */
 	private Thread createConnectionThread()
 	{
-		@SuppressWarnings("resource")
 		final AdbConnection conn = this;
 		return new Thread(new Runnable() {
 			@Override

@@ -24,8 +24,6 @@ import org.fourthline.cling.model.meta.Service;
 import org.fourthline.cling.model.types.ErrorCode;
 import org.fourthline.cling.support.model.ProtocolInfos;
 
-import android.util.Log;
-
 /**
  * @author Christian Bauer
  */

@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.provider.Settings;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;

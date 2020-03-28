@@ -1,7 +1,6 @@
 package com.android.tvremoteime;
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;

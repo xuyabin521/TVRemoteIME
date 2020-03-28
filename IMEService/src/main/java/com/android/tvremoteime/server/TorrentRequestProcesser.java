@@ -2,7 +2,6 @@ package com.android.tvremoteime.server;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.android.tvremoteime.VideoPlayHelper;
 

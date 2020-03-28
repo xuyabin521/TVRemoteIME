@@ -3,9 +3,7 @@ package com.android.tvremoteime;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,9 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.tvremoteime.server.RemoteServer;
 import com.android.tvremoteime.adb.AdbHelper;
-import com.zxt.dlna.dmr.ZxtMediaRenderer;
+import com.android.tvremoteime.server.RemoteServer;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 

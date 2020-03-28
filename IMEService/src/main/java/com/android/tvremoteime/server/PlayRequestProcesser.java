@@ -3,7 +3,6 @@ package com.android.tvremoteime.server;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.android.tvremoteime.AppPackagesHelper;
 import com.android.tvremoteime.VideoPlayHelper;
 
 import java.util.Map;

@@ -5,7 +5,6 @@ import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.security.MessageDigest;
 import java.util.Enumeration;
 import java.util.UUID;

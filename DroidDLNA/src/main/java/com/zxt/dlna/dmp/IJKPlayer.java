@@ -11,8 +11,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 
 import com.zxt.dlna.util.Action;
 

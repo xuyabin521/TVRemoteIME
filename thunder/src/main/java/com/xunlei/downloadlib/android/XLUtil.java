@@ -224,6 +224,7 @@ public class XLUtil {
         return null;
     }
 
+    @SuppressLint("MissingPermission")
     public static String getIMEI(Context context) {
         Exception e;
         if (context == null) {
@@ -234,7 +235,7 @@ public class XLUtil {
             return str;
         }
         String deviceId;
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService("phone");
+        @SuppressLint("WrongConstant") TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService("phone");
         if (telephonyManager != null) {
             try {
                 deviceId = telephonyManager.getDeviceId();
@@ -309,7 +310,7 @@ public class XLUtil {
         if (context == null) {
             return null;
         }
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
+        @SuppressLint("WrongConstant") ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService("connectivity");
         if (connectivityManager == null) {
             return null;
         }
@@ -460,7 +461,7 @@ public class XLUtil {
             byte[] digest = instance.digest();
             StringBuilder stringBuilder = new StringBuilder(32);
             for (byte b : digest) {
-                stringBuilder.append(cArr[(b >> 4) & 15]).append(cArr[(b >> 0) & 15]);
+                stringBuilder.append(cArr[(b >> 4) & 15]).append(cArr[(b) & 15]);
             }
             return stringBuilder.toString();
         } catch (NoSuchAlgorithmException e) {
@@ -511,7 +512,7 @@ public class XLUtil {
             TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService("phone");
             if (telephonyManager != null) {
                 try {
-                    String subscriberId = telephonyManager.getSubscriberId();
+                    @SuppressLint("MissingPermission") String subscriberId = telephonyManager.getSubscriberId();
                     if(subscriberId != null) {
                         if (subscriberId.startsWith("46000") || subscriberId.startsWith("46002")) {
                             return NetWorkCarrier.CMCC;

@@ -20,7 +20,6 @@ import org.fourthline.cling.binding.staging.MutableIcon;
 import org.fourthline.cling.binding.staging.MutableService;
 import org.fourthline.cling.binding.staging.MutableUDAVersion;
 import org.fourthline.cling.model.ValidationException;
-import org.fourthline.cling.model.XMLUtil;
 import org.fourthline.cling.model.meta.Device;
 import org.fourthline.cling.model.types.DLNACaps;
 import org.fourthline.cling.model.types.DLNADoc;

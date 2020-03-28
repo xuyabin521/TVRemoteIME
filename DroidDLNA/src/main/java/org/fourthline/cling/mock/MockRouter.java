@@ -25,7 +25,6 @@ import org.fourthline.cling.transport.Router;
 import org.fourthline.cling.transport.RouterException;
 import org.fourthline.cling.transport.impl.NetworkAddressFactoryImpl;
 import org.fourthline.cling.transport.spi.InitializationException;
-import org.fourthline.cling.transport.spi.NetworkAddressFactory;
 import org.fourthline.cling.transport.spi.UpnpStream;
 
 import javax.enterprise.inject.Alternative;

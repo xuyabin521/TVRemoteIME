@@ -24,8 +24,6 @@ import org.fourthline.cling.UpnpService;
 import org.fourthline.cling.protocol.SendingSync;
 import org.fourthline.cling.transport.RouterException;
 
-import java.net.NetworkInterface;
-import java.net.URL;
 import java.util.List;
 import java.util.logging.Logger;
 

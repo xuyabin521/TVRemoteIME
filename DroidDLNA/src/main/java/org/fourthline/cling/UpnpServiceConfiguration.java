@@ -148,7 +148,7 @@ public interface UpnpServiceConfiguration {
      * Optional setting for flooding alive NOTIFY messages for local devices.
      * <p>
      * Use this to advertise local devices at the specified interval, independent of its
-     * {@link org.fourthline.cling.model.meta.DeviceIdentity#maxAgeSeconds} value. Note
+     *  value. Note
      * that this will increase network traffic.
      * </p>
      * <p>

@@ -154,7 +154,7 @@ public class AdbProtocol {
 			message.putInt(0);
 		}
 		
-		message.putInt(cmd ^ 0xFFFFFFFF);
+		message.putInt(~cmd);
 		
 		if (payload != null)
 		{

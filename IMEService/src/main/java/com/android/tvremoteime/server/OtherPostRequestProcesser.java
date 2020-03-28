@@ -2,8 +2,6 @@ package com.android.tvremoteime.server;
 
 import android.content.Context;
 
-import com.android.tvremoteime.AppPackagesHelper;
-
 import java.util.Map;
 
 import fi.iki.elonen.NanoHTTPD;

@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fi.iki.elonen.*;
-import xllib.DownloadManager;
 import xllib.DownloadTask;
 
 public class RemoteServerFileManager implements NanoHTTPD.TempFileManager {

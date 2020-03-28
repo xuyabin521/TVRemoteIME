@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.WindowManager;
 

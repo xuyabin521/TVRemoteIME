@@ -67,7 +67,6 @@ public class SurfaceRenderView extends SurfaceView implements IRenderView {
         mMeasureHelper = new MeasureHelper(this);
         mSurfaceCallback = new SurfaceCallback(this);
         getHolder().addCallback(mSurfaceCallback);
-        //noinspection deprecation
         getHolder().setType(SurfaceHolder.SURFACE_TYPE_NORMAL);
     }
 

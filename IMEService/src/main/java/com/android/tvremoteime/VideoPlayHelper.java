@@ -5,10 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 
-import fi.iki.elonen.NanoHTTPD;
 import player.XLVideoPlayActivity;
 import xllib.DownloadManager;
-import xllib.FileUtils;
 
 /**
  * Created by kingt on 2018/2/22.
