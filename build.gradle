@@ -5,7 +5,6 @@ buildscript {
     }
     dependencies {
         // Android plugin for gradle
-        // http://google.github.io/android-gradle-dsl
         classpath 'com.android.tools.build:gradle:3.6.1'
     }
 }
