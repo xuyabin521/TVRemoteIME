@@ -4,10 +4,13 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.tvremoteime.IMEService;
+import com.android.tvremoteime.R;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.Map;
 
@@ -22,25 +25,25 @@ public class TVRequestProcesser implements RequestProcesser {
     private final File tvFile = new File(RemoteServerFileManager.baseDir, "tv.txt");
     public TVRequestProcesser(Context context){
         this.context = context;
-//        initTVData();
+        initTVData();
     }
 
-//    private void initTVData(){
-//        if(!tvFile.exists()){
-//            try {
-//                InputStream ins = context.getResources().openRawResource(R.raw.tv);
-//                FileOutputStream out = new FileOutputStream(tvFile);
-//                byte[] b = new byte[1024];
-//                int n = 0;
-//                while ((n = ins.read(b)) != -1) {
-//                    out.write(b, 0, n);
-//                }
-//                ins.close();
-//                out.close();
-//            }catch (Exception e) {
-//            }
-//        }
-//    }
+    private void initTVData(){
+        if(!tvFile.exists()){
+            try {
+                InputStream ins = context.getResources().openRawResource(R.raw.tv);
+                FileOutputStream out = new FileOutputStream(tvFile);
+                byte[] b = new byte[1024];
+                int n = 0;
+                while ((n = ins.read(b)) != -1) {
+                    out.write(b, 0, n);
+                }
+                ins.close();
+                out.close();
+            }catch (Exception e) {
+            }
+        }
+    }
 
     @Override
     public boolean isRequest(NanoHTTPD.IHTTPSession session, String fileName) {
@@ -63,12 +66,12 @@ public class TVRequestProcesser implements RequestProcesser {
             }
             return RemoteServer.createPlainTextResponse(NanoHTTPD.Response.Status.OK, "fail");
         }else{
-//            try {
-//                InputStream inputStream = tvFile.exists() ? new FileInputStream(tvFile) : context.getResources().openRawResource(R.raw.tv);
-//                return RemoteServer.newFixedLengthResponse(NanoHTTPD.Response.Status.OK, "text/plain; charset=utf-8", inputStream, (long) inputStream.available());
-//            } catch (IOException ioex) {
+            try {
+                InputStream inputStream = tvFile.exists() ? new FileInputStream(tvFile) : context.getResources().openRawResource(R.raw.tv);
+                return RemoteServer.newFixedLengthResponse(NanoHTTPD.Response.Status.OK, "text/plain; charset=utf-8", inputStream, (long) inputStream.available());
+            } catch (IOException ioex) {
                 return RemoteServer.createPlainTextResponse(NanoHTTPD.Response.Status.INTERNAL_ERROR, "SERVER INTERNAL ERROR: IOException: ");
-//            }
+            }
         }
     }
 }
