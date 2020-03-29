@@ -99,7 +99,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".widget.ScreenShotActivity"></activity>
+        <activity android:name=".widget.ScreenShotActivity" />
     </application>
 
 </manifest>
