@@ -11,14 +11,14 @@ import android.os.AsyncTask;
  */
 final class AsyncTaskCompat {
 
-    static <Params, Progress, Result> android.os.AsyncTask<Params, Progress, Result> executeParallel(
+    @SafeVarargs
+    static <Params, Progress, Result> void executeParallel(
             AsyncTask<Params, Progress, Result> task,
             Params... params) {
         if (task == null) {
             throw new IllegalArgumentException("task can not be null");
         }
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, params);
-        return task;
     }
     private AsyncTaskCompat() {}
 }

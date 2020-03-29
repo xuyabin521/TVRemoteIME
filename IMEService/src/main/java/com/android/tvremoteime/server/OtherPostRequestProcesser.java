@@ -11,10 +11,8 @@ import fi.iki.elonen.NanoHTTPD;
  */
 
 public class OtherPostRequestProcesser implements RequestProcesser {
-    private Context context;
 
     public OtherPostRequestProcesser(Context context){
-        this.context = context;
     }
 
     @Override

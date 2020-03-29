@@ -13,7 +13,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
  * Created by kingt on 2018/1/8.
  */
 
-public class QRCodeGen {
+class QRCodeGen {
     public static Bitmap generateBitmap(String content, int width, int height) {
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         Map<EncodeHintType, String> hints = new HashMap<>();

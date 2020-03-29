@@ -18,8 +18,8 @@ import fi.iki.elonen.NanoHTTPD;
  */
 
 public class TVRequestProcesser implements RequestProcesser {
-    private Context context;
-    private File tvFile = new File(RemoteServerFileManager.baseDir, "tv.txt");
+    private final Context context;
+    private final File tvFile = new File(RemoteServerFileManager.baseDir, "tv.txt");
     public TVRequestProcesser(Context context){
         this.context = context;
 //        initTVData();

@@ -22,12 +22,12 @@ import java.util.ArrayDeque;
  */
 
 public class AdbHelper {
-    private static String TAG = "AdbHelper";
+    private static final String TAG = "AdbHelper";
     private AdbConnection connection = null;
     private String host;
     private int port;
 
-    private ArrayDeque<Object> sendDataDeque = new ArrayDeque<>();
+    private final ArrayDeque<Object> sendDataDeque = new ArrayDeque<>();
     private Thread sendDataThread = null;
     private boolean running = false;
     private Context context;
@@ -35,11 +35,11 @@ public class AdbHelper {
     private AdbHelper(){
     }
 
-    public boolean isRunning(){
+    private boolean isRunning(){
         return running;
     }
 
-    public void init(Context context, String host, int port) {
+    private void init(Context context, String host, int port) {
         this.context = context;
         this.host = host;
         this.port = port;
@@ -47,7 +47,7 @@ public class AdbHelper {
         this.initSDThread();
     }
 
-    public void stop() {
+    private void stop() {
         this.running = false;
         this.context = null;
         if(this.connection != null){
@@ -65,7 +65,7 @@ public class AdbHelper {
             sendDataThread.interrupt();
             try {
                 sendDataThread.join();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ignored) {
             }
         }
     }
@@ -77,7 +77,7 @@ public class AdbHelper {
             sendDataThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Object data = 0;
+                    Object data;
                     while (running) {
                         synchronized (sendDataDeque) {
                             try {
@@ -92,7 +92,7 @@ public class AdbHelper {
                                 continue;
                             }
                         }
-                        String msg = null;
+                        String msg;
                         if(data instanceof Integer){
                             msg = "shell:input keyevent " + String.valueOf(data);
                         }else{

@@ -13,11 +13,9 @@ import fi.iki.elonen.NanoHTTPD;
  */
 
 public class InputRequestProcesser implements RequestProcesser {
-    private Context context;
-    private RemoteServer remoteServer;
+    private final RemoteServer remoteServer;
 
     public InputRequestProcesser(Context context, RemoteServer remoteServer){
-        this.context = context;
         this.remoteServer = remoteServer;
     }
 

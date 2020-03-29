@@ -12,7 +12,7 @@ import fi.iki.elonen.NanoHTTPD;
  */
 
 public class AppRequestProcesser implements RequestProcesser {
-    private Context context;
+    private final Context context;
 
     public AppRequestProcesser(Context context){
         this.context = context;

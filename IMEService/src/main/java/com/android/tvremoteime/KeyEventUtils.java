@@ -6,7 +6,7 @@ import android.view.KeyEvent;
  * Created by kingt on 2018/1/9.
  */
 
-public class KeyEventUtils {
+class KeyEventUtils {
     public static boolean isKeyboardFocusEvent(int keyCode){
         switch (keyCode) {
             case KeyEvent.KEYCODE_DPAD_UP:

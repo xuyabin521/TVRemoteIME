@@ -14,15 +14,15 @@ import com.zxt.dlna.dmr.ZxtMediaRenderer;
 import org.fourthline.cling.android.AndroidUpnpService;
 import org.fourthline.cling.android.AndroidUpnpServiceImpl;
 
-public class DLNAUtils {
-    private static String TAG = "DLNAUtils";
+class DLNAUtils {
+    private static final String TAG = "DLNAUtils";
     private static ZxtMediaRenderer mMediaRenderer = null;
 
     public static void setDLNANameSuffix(Context context, String nameSuffix){
         SharedPreferences sharedPreferences = context.getApplicationContext().getSharedPreferences("dlna_settings", 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("nameSuffix", nameSuffix);
-        editor.commit();
+        editor.apply();
         startDLNAService(context);
     }
 

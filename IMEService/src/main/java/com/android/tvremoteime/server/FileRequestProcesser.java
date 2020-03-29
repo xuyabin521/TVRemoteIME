@@ -24,10 +24,8 @@ import xllib.FileUtils;
  */
 
 public class FileRequestProcesser  implements RequestProcesser {
-    private Context context;
 
     public FileRequestProcesser(Context context){
-        this.context = context;
     }
 
     @Override
@@ -113,7 +111,7 @@ public class FileRequestProcesser  implements RequestProcesser {
             }
 
             JSONObject data = new JSONObject();
-            if(!TextUtils.isEmpty(dirName) && dirName != "/") data.put("parent", path.getParent().substring(root.length()));
+            if(!TextUtils.isEmpty(dirName) && !dirName.equals("/")) data.put("parent", path.getParent().substring(root.length()));
             data.put("dirs", dirs);
             data.put("files", files);
             return RemoteServer.createJSONResponse(NanoHTTPD.Response.Status.OK, data.toString());
@@ -130,7 +128,7 @@ public class FileRequestProcesser  implements RequestProcesser {
         try{
             InputStream inputStream = new FileInputStream(file);
             return RemoteServer.newFixedLengthResponse(NanoHTTPD.Response.Status.OK,
-                    NanoHTTPD.getMimeTypeForFile(file.getName()) + "; charset=utf-8", inputStream, (long)inputStream.available());
+                    NanoHTTPD.getMimeTypeForFile(file.getName()) + "; charset=utf-8", inputStream, inputStream.available());
         } catch (Exception e) {
             return RemoteServer.createPlainTextResponse(NanoHTTPD.Response.Status.NOT_FOUND, "Error 404, file not found.");
         }

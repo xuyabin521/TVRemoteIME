@@ -8,7 +8,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -27,36 +30,36 @@ import org.json.JSONObject;
 
 public class AppPackagesHelper {
 
-    public static class AppInfo implements Serializable{
+    static class AppInfo implements Serializable{
         private String lable;
         private String packageName;
         private String apkPath;
         private boolean isSysApp;
 
-        public String getLable() {
+        String getLable() {
             return lable;
         }
 
-        public void setLable(String lable) {
+        void setLable(String lable) {
             this.lable = lable;
         }
 
-        public String getPackageName() {
+        String getPackageName() {
             return packageName;
         }
 
-        public void setPackageName(String packageName) {
+        void setPackageName(String packageName) {
             this.packageName = packageName;
         }
 
-        public boolean isSysApp() {
+        boolean isSysApp() {
             return isSysApp;
         }
 
-        public void setSysApp(boolean sysApp) {
+        void setSysApp(boolean sysApp) {
             isSysApp = sysApp;
         }
-        public JSONObject toJSONObject()
+        JSONObject toJSONObject()
         {
             JSONObject obj = new JSONObject();
             try {
@@ -70,11 +73,11 @@ public class AppPackagesHelper {
             return obj;
         }
 
-        public String getApkPath() {
+        String getApkPath() {
             return apkPath;
         }
 
-        public void setApkPath(String apkPath) {
+        void setApkPath(String apkPath) {
             this.apkPath = apkPath;
         }
     }
@@ -84,15 +87,16 @@ public class AppPackagesHelper {
         try {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             version = packageInfo.versionName;
-        }catch (PackageManager.NameNotFoundException e){}
+        }catch (PackageManager.NameNotFoundException ignored){}
         return version;
     }
 
-    public static List<AppInfo> queryAppInfo(Context context, boolean containSysApp){
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private static List<AppInfo> queryAppInfo(Context context, boolean containSysApp){
         PackageManager pm = context.getPackageManager();
         List<ApplicationInfo> listAppcations = pm
                 .getInstalledApplications(PackageManager.MATCH_UNINSTALLED_PACKAGES);
-        List<AppInfo> appInfos = new ArrayList<AppInfo>();
+        List<AppInfo> appInfos = new ArrayList<>();
         for (ApplicationInfo app : listAppcations) {
             if(containSysApp || (app.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 boolean isSysApp = (app.flags & ApplicationInfo.FLAG_SYSTEM) != 0;

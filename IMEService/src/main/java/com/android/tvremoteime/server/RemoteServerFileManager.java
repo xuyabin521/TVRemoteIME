@@ -40,11 +40,11 @@ public class RemoteServerFileManager implements NanoHTTPD.TempFileManager {
         tmpDataDir = new File(baseDir, "temp");
         playerCacheDir = new File(baseDir, "xlplayer");
     }
-    public static class SDCardTempFile implements NanoHTTPD.TempFile {
+    static class SDCardTempFile implements NanoHTTPD.TempFile {
         private final File file;
         private OutputStream fstream;
         private boolean isTemp;
-        public SDCardTempFile(String fileName) throws IOException {
+        SDCardTempFile(String fileName) throws IOException {
             if(fileName == null || fileName.isEmpty()){
                 this.file = File.createTempFile("tmp-", "", tmpDataDir);
                 isTemp = true;
@@ -77,7 +77,7 @@ public class RemoteServerFileManager implements NanoHTTPD.TempFileManager {
 
     private final List<NanoHTTPD.TempFile> tempFiles;
     private RemoteServerFileManager() {
-        this.tempFiles = new ArrayList<NanoHTTPD.TempFile>();
+        this.tempFiles = new ArrayList<>();
     }
     @Override
     public void clear() {
@@ -131,7 +131,7 @@ public class RemoteServerFileManager implements NanoHTTPD.TempFileManager {
 
         }
     }
-    public static void deleteDirFiles(File file){
+    private static void deleteDirFiles(File file){
         File[] files =  file.listFiles();
         for (File f : files) {
             try {
@@ -198,7 +198,7 @@ public class RemoteServerFileManager implements NanoHTTPD.TempFileManager {
             FileInputStream ins = new FileInputStream(sourceFile);
             FileOutputStream out = new FileOutputStream(targetFile);
             byte[] b = new byte[1024];
-            int n = 0;
+            int n;
             while ((n = ins.read(b)) != -1) {
                 out.write(b, 0, n);
             }

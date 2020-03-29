@@ -17,7 +17,7 @@ import xllib.FileUtils;
  */
 
 public class UploadRequestProcesser implements RequestProcesser {
-    private Context context;
+    private final Context context;
 
     public UploadRequestProcesser(Context context){
         this.context = context;

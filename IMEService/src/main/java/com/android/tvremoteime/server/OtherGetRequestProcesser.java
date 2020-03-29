@@ -17,7 +17,7 @@ import fi.iki.elonen.NanoHTTPD;
  */
 
 public class OtherGetRequestProcesser implements RequestProcesser {
-    private Context context;
+    private final Context context;
 
     public OtherGetRequestProcesser(Context context){
         this.context = context;

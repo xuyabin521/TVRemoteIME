@@ -45,10 +45,10 @@ public class RemoteServer extends NanoHTTPD
     public static int serverPort = 9978;
     private boolean isStarted = false;
     private DataReceiver mDataReceiver = null;
-    private Context mContext = null;
-    private RemoteServerFileManager.Factory fileManagerFactory = new RemoteServerFileManager.Factory();
-    private ArrayList<RequestProcesser> getRequestProcessers = new ArrayList<>();
-    private ArrayList<RequestProcesser> postRequestProcessers = new ArrayList<>();
+    private Context mContext;
+    private final RemoteServerFileManager.Factory fileManagerFactory = new RemoteServerFileManager.Factory();
+    private final ArrayList<RequestProcesser> getRequestProcessers = new ArrayList<>();
+    private final ArrayList<RequestProcesser> postRequestProcessers = new ArrayList<>();
 
     public void setDataReceiver(DataReceiver receiver){
         mDataReceiver = receiver;
@@ -170,7 +170,7 @@ public class RemoteServer extends NanoHTTPD
                     }
                 }
             } else if (session.getMethod() == Method.POST) {
-                Map<String, String> files = new HashMap<String, String>();
+                Map<String, String> files = new HashMap<>();
                 try {
                     session.parseBody(files);
                 } catch (IOException ioex) {

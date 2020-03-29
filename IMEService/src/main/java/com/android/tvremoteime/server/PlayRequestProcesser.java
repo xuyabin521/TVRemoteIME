@@ -15,7 +15,7 @@ import player.settings.GlobalSettings;
  */
 
 public class PlayRequestProcesser implements RequestProcesser {
-    private Context context;
+    private final Context context;
 
     public PlayRequestProcesser(Context context){
         this.context = context;
@@ -48,7 +48,7 @@ public class PlayRequestProcesser implements RequestProcesser {
             case "/changePlayFFI":
                 if(!TextUtils.isEmpty(params.get("speedInterval"))){
                     try{
-                        GlobalSettings.FastForwardInterval = Integer.valueOf(params.get("speedInterval")) * 1000;
+                        GlobalSettings.FastForwardInterval = Integer.parseInt(params.get("speedInterval")) * 1000;
                     }catch (NumberFormatException ignored) {
                     }
                 }

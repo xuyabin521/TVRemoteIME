@@ -8,7 +8,7 @@ import fi.iki.elonen.NanoHTTPD;
  * Created by kingt on 2018/1/7.
  */
 
-public interface RequestProcesser {
+interface RequestProcesser {
     /**
      * isRequest
      * @param session

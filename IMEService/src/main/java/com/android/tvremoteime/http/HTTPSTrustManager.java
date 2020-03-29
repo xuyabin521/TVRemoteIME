@@ -14,23 +14,21 @@ import javax.net.ssl.X509TrustManager;
 /**
  * Created by kingt on 2018/4/11.
  */
-public class HTTPSTrustManager implements X509TrustManager {
+class HTTPSTrustManager implements X509TrustManager {
 
     private static TrustManager[] trustManagers;
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[] {};
 
     @Override
     public void checkClientTrusted(
-            java.security.cert.X509Certificate[] x509Certificates, String s)
-            throws java.security.cert.CertificateException {
+            java.security.cert.X509Certificate[] x509Certificates, String s) {
         // To change body of implemented methods use File | Settings | File
         // Templates.
     }
 
     @Override
     public void checkServerTrusted(
-            java.security.cert.X509Certificate[] x509Certificates, String s)
-            throws java.security.cert.CertificateException {
+            java.security.cert.X509Certificate[] x509Certificates, String s) {
         // To change body of implemented methods use File | Settings | File
         // Templates.
     }

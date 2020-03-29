@@ -52,9 +52,6 @@ public class HTTPGet {
         } catch (Exception e) {
             Log.e("HTTPGet", "readString", e);
         }
-        finally {
-
-        }
         return null;
     }
 

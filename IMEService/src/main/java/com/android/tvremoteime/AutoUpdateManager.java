@@ -19,12 +19,12 @@ import java.io.File;
 /**
  * Created by kingt on 2018/4/11.
  */
-public class AutoUpdateManager {
-    private static String TAG = "AutoUpdateManager";
-    private Context context;
-    private Handler handler;
-    private File localFile = null;
-    private static String VERSION_URL = "https://gitee.com/kingthy/TVRemoteIME/raw/master/released/version.json";
+class AutoUpdateManager {
+    private static final String TAG = "AutoUpdateManager";
+    private final Context context;
+    private final Handler handler;
+    private File localFile;
+    private static final String VERSION_URL = "https://gitee.com/kingthy/TVRemoteIME/raw/master/released/version.json";
     public AutoUpdateManager(Context context, Handler handler){
         this.context = context;
         this.handler = handler;
@@ -95,7 +95,7 @@ public class AutoUpdateManager {
         try {
             PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             return packageInfo.versionCode;
-        }catch (PackageManager.NameNotFoundException e){}
+        }catch (PackageManager.NameNotFoundException ignored){}
         return -1;
     }
 

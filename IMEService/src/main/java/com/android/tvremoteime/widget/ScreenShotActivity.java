@@ -32,8 +32,8 @@ import java.nio.ByteBuffer;
 
 public class ScreenShotActivity extends Activity {
 
-    public static final int REQUEST_MEDIA_PROJECTION = 0x8000;
-    private static OnSavedListener onSavedListener = null;
+    private static final int REQUEST_MEDIA_PROJECTION = 0x8000;
+    private static final OnSavedListener onSavedListener = null;
 
     private MediaProjection mMediaProjection;
     private VirtualDisplay mVirtualDisplay;
@@ -51,7 +51,7 @@ public class ScreenShotActivity extends Activity {
         requestScreenShot();
     }
 
-    public void requestScreenShot() {
+    private void requestScreenShot() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mMediaProjectionManager = (MediaProjectionManager) this.getSystemService(Context.MEDIA_PROJECTION_SERVICE);
             try {
@@ -112,7 +112,7 @@ public class ScreenShotActivity extends Activity {
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public void startScreenShot() {
+    private void startScreenShot() {
         virtualDisplay();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

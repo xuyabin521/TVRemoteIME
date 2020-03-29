@@ -25,8 +25,8 @@ import java.io.IOException;
 
 
 public class IMEService extends InputMethodService implements View.OnClickListener{
-	public static String TAG = "TVRemoteIME";
-	public static String ACTION = "com.android.tvremoteime";
+	public static final String TAG = "TVRemoteIME";
+	public static final String ACTION = "com.android.tvremoteime";
 
 	private boolean capsOn = false;
 	private ImageButton btnCaps = null;
@@ -43,15 +43,11 @@ public class IMEService extends InputMethodService implements View.OnClickListen
 	private LinearLayout asdLine = null;
 	private LinearLayout zxcLine = null;
 
-	private static final int SERVER_START_ERROR = 901;
-	private static final int ERROR = 999;
-	private static final int TOAST_MESSAGE = 1000;
-
 	public static final int KEY_ACTION_PRESSED = 0;
 	public static final int KEY_ACTION_DOWN = 1;
 	public static final int KEY_ACTION_UP = 2;
 
-	final Handler handler = new Handler();
+	private final Handler handler = new Handler();
 
 	@Override
 	public void onCreate() {
@@ -144,7 +140,7 @@ public class IMEService extends InputMethodService implements View.OnClickListen
 		super.onEvaluateInputViewShown();
 		if(hideWindowByKey){
 			hideWindowByKey = false;
-			return hideWindowByKey;
+			return false;
 		}
 		EditorInfo editorInfo = getCurrentInputEditorInfo();
 		return !(editorInfo == null || editorInfo.inputType == EditorInfo.TYPE_NULL);
