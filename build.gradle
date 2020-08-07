@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         // Android plugin for gradle
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:4.0.0'
     }
 }
 allprojects {

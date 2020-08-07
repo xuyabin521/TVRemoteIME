@@ -47,8 +47,8 @@ public class RemoteServer extends NanoHTTPD
     private DataReceiver mDataReceiver = null;
     private Context mContext;
     private final RemoteServerFileManager.Factory fileManagerFactory = new RemoteServerFileManager.Factory();
-    private final ArrayList<RequestProcesser> getRequestProcessers = new ArrayList<>();
-    private final ArrayList<RequestProcesser> postRequestProcessers = new ArrayList<>();
+    private final ArrayList<RequestProcessor> getRequestProcessors = new ArrayList<>();
+    private final ArrayList<RequestProcessor> postRequestProcessors = new ArrayList<>();
 
     public void setDataReceiver(DataReceiver receiver){
         mDataReceiver = receiver;
@@ -129,29 +129,29 @@ public class RemoteServer extends NanoHTTPD
     }
 
     private void addGetRequestProcessers(){
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/index.html", R.raw.index, NanoHTTPD.MIME_HTML));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/style.css", R.raw.style, "text/css"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/jquery_min.js", R.raw.jquery_min, "application/x-javascript"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/ime_core.js", R.raw.ime_core, "application/x-javascript"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/keys.png", R.raw.keys, "image/png"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/ic_dl_folder.png", R.raw.ic_dl_folder, "image/png"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/ic_dl_other.png", R.raw.ic_dl_other, "image/png"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/ic_dl_video.png", R.raw.ic_dl_video, "image/png"));
-        this.getRequestProcessers.add(new RawRequestProcesser(this.mContext, "/favicon.ico", R.drawable.ic_launcher, "image/x-icon"));
-        this.getRequestProcessers.add(new FileRequestProcesser(this.mContext));
-        this.getRequestProcessers.add(new AppIconRequestProcesser(this.mContext));
-        this.getRequestProcessers.add(new TVRequestProcesser(this.mContext));
-        this.getRequestProcessers.add(new OtherGetRequestProcesser(this.mContext));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/index.html", R.raw.index, NanoHTTPD.MIME_HTML));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/style.css", R.raw.style, "text/css"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/jquery_min.js", R.raw.jquery_min, "application/x-javascript"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/ime_core.js", R.raw.ime_core, "application/x-javascript"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/keys.png", R.raw.keys, "image/png"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/ic_dl_folder.png", R.raw.ic_dl_folder, "image/png"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/ic_dl_other.png", R.raw.ic_dl_other, "image/png"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/ic_dl_video.png", R.raw.ic_dl_video, "image/png"));
+        this.getRequestProcessors.add(new RawRequestProcessor(this.mContext, "/favicon.ico", R.drawable.ic_launcher, "image/x-icon"));
+        this.getRequestProcessors.add(new FileRequestProcessor(this.mContext));
+        this.getRequestProcessors.add(new AppIconRequestProcessor(this.mContext));
+        this.getRequestProcessors.add(new TVRequestProcessor(this.mContext));
+        this.getRequestProcessors.add(new OtherGetRequestProcessor(this.mContext));
     }
     private void addPostRequestProcessers(){
-        this.postRequestProcessers.add(new InputRequestProcesser(this.mContext, this));
-        this.postRequestProcessers.add(new UploadRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new AppRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new PlayRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new FileRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new TVRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new TorrentRequestProcesser(this.mContext));
-        this.postRequestProcessers.add(new OtherPostRequestProcesser(this.mContext));
+        this.postRequestProcessors.add(new InputRequestProcessor(this.mContext, this));
+        this.postRequestProcessors.add(new UploadRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new AppRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new PlayRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new FileRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new TVRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new TorrentRequestProcessor(this.mContext));
+        this.postRequestProcessors.add(new OtherPostRequestProcessor(this.mContext));
     }
 
 
@@ -164,7 +164,7 @@ public class RemoteServer extends NanoHTTPD
                 fileName = fileName.substring(0, fileName.indexOf('?'));
             }
             if (session.getMethod() == Method.GET) {
-                for(RequestProcesser processer : this.getRequestProcessers){
+                for(RequestProcessor processer : this.getRequestProcessors){
                     if(processer.isRequest(session, fileName)){
                         return processer.doResponse(session, fileName, session.getParms(), null);
                     }
@@ -178,7 +178,7 @@ public class RemoteServer extends NanoHTTPD
                 } catch (NanoHTTPD.ResponseException rex) {
                     return createPlainTextResponse(rex.getStatus(),  rex.getMessage());
                 }
-                for(RequestProcesser processer : this.postRequestProcessers){
+                for(RequestProcessor processer : this.postRequestProcessors){
                     if(processer.isRequest(session, fileName)){
                         return processer.doResponse(session, fileName, session.getParms(), files);
                     }
@@ -186,6 +186,6 @@ public class RemoteServer extends NanoHTTPD
             }
         }
         //default page: index.html
-        return this.getRequestProcessers.get(0).doResponse(session, "", null, null);
+        return this.getRequestProcessors.get(0).doResponse(session, "", null, null);
     }
 }

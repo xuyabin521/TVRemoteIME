@@ -1,5 +1,6 @@
 package xllib;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.xunlei.downloadlib.XLTaskHelper;
@@ -15,6 +16,7 @@ public class DownloadManager {
         this.downloadTask = new DownloadTask();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private static volatile DownloadManager instance = null;
 
     public static DownloadManager instance() {
